@@ -1,0 +1,57 @@
+<view>
+  <view class="header">
+    <image src="{{userInfo.avatarUrl}}"></image>
+    <view class='user-name'>
+      <text>{{userInfo.nickName}}</text>
+    </view>
+    <view class='user-info'>
+      <text class="borrow-count">已借：123 次 </text> | 
+      <text class='rank'>排行: 1</text>
+    </view>
+  </view>
+  <view class="main">
+    <view class="item">借阅历史
+      <!-- <span class="more-btn">></span> -->
+    </view>
+    <view class='record'>
+      <view class="book-item" data-id="123" bindtap="toBookDetail">
+        <view class="book-img">
+          <image src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg"></image>
+        </view>
+        <view class="book-info">
+          <view class="title">
+            <text>JavaScript权威指南</text>
+          </view>
+          <view class="start">
+            <span class='label'>借阅日期:</span><text>2018-01-01</text>
+          </view>
+          <view class="day">
+            <span class='label'>借阅天数:</span><text>60天</text>
+          </view>
+        </view>
+        <view class="return">
+          <button type='default' size='mini'>还书</button>
+        </view>
+      </view>
+      <view class="book-item" data-id="123" bindtap="toBookDetail">
+        <view class="book-img">
+          <image src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg"></image>
+        </view>
+        <view class="book-info">
+          <view class="title">
+            <text>JavaScript权威指南</text>
+          </view>
+          <view class="start">
+            <span class='label'>借阅日期:</span><text>2018-01-01</text>
+          </view>
+          <view class="day">
+            <span class='label'>借阅天数:</span><text>60天</text>
+          </view>
+        </view>
+        <view class="return">
+          <button type='default' size='mini'>还书</button>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

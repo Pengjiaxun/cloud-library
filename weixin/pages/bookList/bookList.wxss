@@ -1,0 +1,100 @@
+/* pages/bookList/bookList.wxss */
+
+.tab {
+  display: flex;
+  padding: 0 40rpx;
+  margin-bottom: 20rpx;
+}
+
+.tab-item {
+  flex: 1;
+  width: 20rpx;
+  font-size: 28rpx;
+  text-align: center;
+  padding: 10rpx 0;
+}
+
+.active {
+  font-weight: bold;
+  border-bottom: 6rpx solid #62c0e2;
+}
+
+.main {
+  height: 100%;
+  padding: 0 40rpx;
+  font-size: 30rpx;
+}
+
+.list .search {
+  display: flex;
+  margin-bottom: 20rpx;
+  padding: 8rpx 20rpx;
+  font-size: 28rpx;
+  border-radius: 20rpx;
+  border: 4rpx solid #62c0e2;
+}
+
+.list .search input {
+  flex: 1;
+}
+
+.list .search icon {
+  padding: 10rpx;
+}
+
+.list .book-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 160rpx;
+  margin-bottom: 20rpx;
+  padding-bottom: 10rpx;
+  border-bottom: 2rpx solid #e7e7e7;
+}
+
+.list .book-item:last-child {
+  border: none;
+}
+
+.book-item .book-img {
+  position: relative;
+  height: 100%;
+  margin-right: 20rpx;
+}
+
+.book-item .book-img .index {
+  position: absolute;
+  top: -20rpx;
+  left: -20rpx;
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  background-color: #62c0e2;
+  font-size: 28rpx;
+  text-align: center;
+  color: #fff;
+}
+
+.book-item .book-img image {
+  width: 150rpx;
+  height: 100%;
+}
+.book-item .book-info {
+  width: 100%;
+  height: 100%;
+  text-align: left;
+}
+
+.book-info .title {
+  font-weight: bold;
+  margin-bottom: 15rpx;
+}
+
+.book-info .author, .book-info .issued {
+  margin-bottom: 15rpx;
+  font-size: 28rpx;
+  color: gray;
+}
+
+.book-item .more-btn {
+}

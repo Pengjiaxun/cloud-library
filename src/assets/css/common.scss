@@ -1,0 +1,106 @@
+// 清楚浮动
+.clearfix {
+    display: inline-block;
+    &:after {
+        display: block;
+        content: '.';
+        height: 0;
+        line-height: 0;
+        clear: both;
+        visibility: hidden;
+    }
+}
+
+// 单行文本超出长度显示省略号
+.ellipsis {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+// 定位
+.pos-abs {
+    position: absolute;
+}
+
+.pos-rel {
+    position: relative;
+}
+
+.pos-fix {
+    position: fixed;
+}
+
+// display
+.inline-block {
+    display: inline-block;
+}
+
+.none {
+    display: none;
+}
+
+// 文字排版
+.tl {
+    text-align: left;
+}
+
+.tr {
+    text-align: right;
+}
+
+.tc {
+    text-align: center;
+}
+
+// 块级元素水平居中
+.mc {
+    margin: 0 auto;
+}
+
+// 浮动
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+// 字体大小
+.fs-14 {
+    font-size: 14px;
+}
+
+.fs-16 {
+    font-size: 16px;
+}
+
+.fs-18 {
+    font-size: 18px;
+}
+
+.fs-20 {
+    font-size: 20px;
+}
+
+.fs-22 {
+    font-size: 22px;
+}
+
+.fs-24 {
+    font-size: 24px;
+}
+
+.fs-26 {
+    font-size: 26px;
+}
+
+.fs-28 {
+    font-size: 28px;
+}
+
+// 字体颜色
+.white {
+    color: #fff;
+}

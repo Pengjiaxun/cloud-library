@@ -1,0 +1,20 @@
+<!--pages/login/login.wxml-->
+<view class='container'>
+  <view class='bg-img'>
+    <image mode='scaleToFill' src='../../images/login_bg.png'></image>
+  </view>
+  <view class='main'>
+    <view class='title'>
+      <text>云空间·书架</text>
+    </view>
+    <view class='account-input'>
+      <input focus='true' value='pjx' bindinput='bindAccountInput' placeholder='账号' placeholder-style='color: #fff;' />
+    </view>
+    <view class='pwd-input'>
+      <input value='123' bindinput='bindPwdInput' password placeholder='密码' placeholder-style='color: #fff;' />
+    </view>
+    <view class='login-btn'>
+      <button type='default' bindtap='login' size='mini'>登陆</button>
+    </view>
+  </view>
+</view>

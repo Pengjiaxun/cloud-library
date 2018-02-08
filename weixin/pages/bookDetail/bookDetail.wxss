@@ -1,0 +1,53 @@
+.book-detail {
+  padding: 20rpx 40rpx;
+}
+
+.book-detail .header {
+  display: flex;
+  height: 300rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid #d7d7d7;
+}
+
+.header image {
+  width: 200rpx;
+  height: 100%;
+}
+
+.info {
+  font-size: 30rpx;
+  margin-left: 20rpx;
+}
+
+.info .title {
+  font-weight: bold;
+  font-size: 40rpx;
+  margin-bottom: 20rpx;
+}
+
+.info .label {
+  color: #666;
+  margin-right: 10rpx;
+}
+
+.desc .title {
+  margin: 20rpx 0;
+}
+
+.desc .content {
+  font-size: 28rpx;
+  color: #111;
+  text-indent: 20rpx;
+}
+
+.footer {
+  padding: 0 40rpx;
+  position: fixed;
+  bottom: 20rpx;
+  width: 100%;
+  box-sizing:border-box;
+}
+
+.footer button {
+  width: 100%
+}

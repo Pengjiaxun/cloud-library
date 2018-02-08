@@ -1,0 +1,87 @@
+/* pages/mine/mine.wxss */
+
+.header {
+  background-color: #62c0e2;
+  text-align: center;
+  padding: 20rpx 0;
+  color: #fff;
+  border-bottom: 30rpx solid #e7e7e7;
+}
+
+.header image {
+  border-radius: 50%;
+  width: 160rpx;
+  height: 160rpx;
+  border: 6rpx solid #fff;
+}
+
+.header .user-name {
+  margin-bottom: 20rpx;
+}
+
+.header .user-info {
+  font-size: 28rpx;
+  color: #fff;
+}
+
+.main {
+  font-size: 30rpx;
+}
+
+.main {
+  padding: 15rpx 40rpx;
+}
+
+.main .item {
+  padding-bottom: 15rpx;
+  border-bottom: 1rpx solid #e7e7e7;
+  margin-bottom: 20rpx;
+}
+
+.book-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 160rpx;
+  margin-bottom: 20rpx;
+  padding-bottom: 10rpx;
+  border-bottom: 2rpx solid #e7e7e7;
+}
+
+.book-item:last-child {
+  border: none;
+}
+
+.book-item .book-img {
+  height: 100%;
+  margin-right: 20rpx;
+}
+
+.book-item .book-img image {
+  width: 150rpx;
+  height: 100%;
+}
+
+.book-item .book-info {
+  width: 100%;
+  height: 100%;
+  text-align: left;
+}
+
+.book-info .title {
+  font-weight: bold;
+  margin-bottom: 15rpx;
+}
+
+.book-item .return {
+  width: 220rpx;
+}
+
+.book-info .label {
+  color: #666;
+  margin-right: 10rpx;
+}
+
+/* .main .item .more-btn {
+  float: right;
+} */

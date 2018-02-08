@@ -1,0 +1,56 @@
+//index.js
+//获取应用实例
+const app = getApp()
+
+Page({
+  data: {
+    bookDetail: {}
+  },
+  getBookDetail(title) {
+    if (title) {
+      const _this = this
+      wx.request({
+        url: 'http://localhost:8888/book/list',
+        data: {
+          title,
+          status: 0
+        },
+        success(res) {
+          if (res.data.result) {
+            _this.setData({
+              bookDetail: res.data.data[0]
+            })
+          }
+          console.log(_this.data.bookDetail)
+        }
+      })
+    }
+  },
+  borrow() {
+    const { title } = this.data.bookDetail
+    wx.request({
+      url: 'http://localhost:8888/record/add',
+      method: 'POST',
+      data: {
+        title,
+        user: app.globalData.userInfo.nickName,
+        status: 2
+      },
+      success(res) {
+        if (res.data.result) {
+          wx.showToast({
+            title: '借阅成功',
+          })
+        }else {
+          wx.showToast({
+            title: `借阅失败:${res.data.msg}`,
+          })
+        }
+        
+      }
+    })
+  },
+  onLoad(option) {
+    this.getBookDetail(option.title)
+  }
+})

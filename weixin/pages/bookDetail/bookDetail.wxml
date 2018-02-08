@@ -1,0 +1,41 @@
+<view class="book-detail">
+  <view class="header">
+    <view class="image">
+      <image mode="aspectFit" src="{{bookDetail.image}}"></image>
+    </view>
+    <view class="info">
+      <view class="title">
+        <text>{{bookDetail.title}}</text>
+      </view>
+      <view class="author">
+        <span class='label'>作者:</span>
+        <text>{{bookDetail.author}}</text>
+      </view>
+      <view class="press">
+        <span class='label'>出版社:</span>
+        <text>{{bookDetail.publisher}}</text>
+      </view>
+      <view class='page'>
+        <span class='label'>页数:</span>
+        <text>{{bookDetail.pages}}</text>
+      </view>
+      <view class="borrow-count">
+        <span class="label">豆瓣评分:</span>
+        <text>{{bookDetail.rating}}</text>
+      </view>
+      <view class="status">
+        <span class='label'>当前状态:</span>
+        <text>{{bookDetail.status === 1 ? '在架' : '借出'}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='desc'>
+    <view class='title'>内容简介</view>
+    <view class='content'>
+      <p>{{bookDetail.summary}}</p>
+    </view>
+  </view>
+</view>
+<view class='footer'>
+  <button type='default' bindtap='borrow' disabled="{{bookDetail.status === 2}}">我要借</button>
+</view>
