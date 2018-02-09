@@ -20,7 +20,7 @@
                     </template>
                 </el-table-column>
                 <el-table-column prop="user"
-                    label="用户名">
+                    label="用户">
                 </el-table-column>
                 <el-table-column prop="title"
                     label="借阅书籍">

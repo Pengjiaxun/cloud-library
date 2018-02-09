@@ -4,6 +4,7 @@ const app = getApp()
 
 Page({
   data: {
+    title: '',
     bookDetail: {}
   },
   getBookDetail(title) {
@@ -28,19 +29,21 @@ Page({
   },
   borrow() {
     const { title } = this.data.bookDetail
+    const _this = this
     wx.request({
       url: 'http://localhost:8888/record/add',
       method: 'POST',
       data: {
         title,
         user: app.globalData.userInfo.nickName,
-        status: 2
+        status: 1
       },
       success(res) {
         if (res.data.result) {
           wx.showToast({
             title: '借阅成功',
           })
+          _this.getBookDetail(_this.data.title)
         }else {
           wx.showToast({
             title: `借阅失败:${res.data.msg}`,
@@ -51,6 +54,9 @@ Page({
     })
   },
   onLoad(option) {
+    this.setData({
+      title: option.title
+    })
     this.getBookDetail(option.title)
   }
 })

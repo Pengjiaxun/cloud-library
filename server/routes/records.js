@@ -33,7 +33,7 @@ router.post('/add', (req, res) => {
                     msg: err
                 })
             } else {
-                BookSchema.where({ title }).update({ status }, () => {
+                BookSchema.where({ title }).update({ status: status === 1 ? 2 : 1 }, () => {
                     res.json({
                         result: true,
                         msg: status === 1 ? '借阅成功' : '还书成功'
