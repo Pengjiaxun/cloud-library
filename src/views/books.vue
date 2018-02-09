@@ -66,7 +66,8 @@
                         <el-table-column width="80"
                             label="操作">
                             <template slot-scope="scope">
-                                <el-button type="text"
+                                <el-button v-show="scope.row.status === 1"
+                                    type="text"
                                     @click="offshelf(scope.row.title)">下架</el-button>
                             </template>
                         </el-table-column>
