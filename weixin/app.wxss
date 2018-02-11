@@ -1,4 +1,58 @@
 /**app.wxss**/
+
 page {
   height: 100%;
+}
+
+.book-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 160rpx;
+  margin-bottom: 20rpx;
+  padding-bottom: 10rpx;
+  border-bottom: 2rpx solid #e7e7e7;
+}
+
+.book-item:last-child {
+  border: none;
+}
+
+.book-item .book-img {
+  height: 100%;
+  margin-right: 20rpx;
+}
+
+.book-item .book-img image {
+  width: 150rpx;
+  height: 100%;
+}
+
+.book-item .book-info {
+  min-width: 375rpx;
+  height: 100%;
+  text-align: left;
+}
+
+.book-info .title {
+  font-weight: bold;
+  margin-bottom: 15rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.book-item .return {
+  width: 220rpx;
+}
+
+.book-info .label {
+  color: #666;
+  margin-right: 10rpx;
+}
+
+.book-info .author, .book-info .issued {
+  margin-bottom: 15rpx;
+  font-size: 28rpx;
+  color: gray;
 }

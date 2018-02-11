@@ -111,7 +111,12 @@ function insertLog(body) {
 
 // 借阅记录列表
 router.get('/list', (req, res) => {
-    LogSchema.find({}, (err, data) => {
+    const filter = {}
+    if (req.query.user) {
+        filter.user = req.query.user
+        filter.status = 1
+    }
+    LogSchema.find(filter, (err, data) => {
         if (err) {
             res.json({
                 result: false,

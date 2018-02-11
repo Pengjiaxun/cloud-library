@@ -1,10 +1,10 @@
 .book-detail {
-  padding: 20rpx 40rpx;
+  padding: 20rpx 40rpx 140rpx 40rpx;
 }
 
 .book-detail .header {
   display: flex;
-  height: 300rpx;
+  min-height: 300rpx;
   padding-bottom: 20rpx;
   border-bottom: 1rpx solid #d7d7d7;
 }
@@ -41,13 +41,14 @@
 }
 
 .footer {
-  padding: 0 40rpx;
   position: fixed;
-  bottom: 20rpx;
+  bottom: 0;
   width: 100%;
-  box-sizing:border-box;
+  box-sizing: border-box;
+  padding: 20rpx 40rpx;
+  background-color: #fff;
 }
 
 .footer button {
-  width: 100%
+  width: 100%;
 }

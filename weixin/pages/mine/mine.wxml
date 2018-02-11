@@ -5,7 +5,7 @@
       <text>{{userInfo.nickName}}</text>
     </view>
     <view class='user-info'>
-      <text class="borrow-count">已借：{{records.length}} 次 </text> 
+      <text class="borrow-count">已借：{{borrowCount}} 次 </text>
       <!-- |  <text class='rank'>排行: 1</text> -->
     </view>
   </view>
@@ -23,10 +23,12 @@
             <text>{{item.title}}</text>
           </view>
           <view class="start">
-            <span class='label'>借阅日期:</span><text>{{item.date}}</text>
+            <span class='label'>借阅日期:</span>
+            <text>{{item.date}}</text>
           </view>
           <view class="day">
-            <span class='label'>已借:</span><text>{{item.day}} 天</text>
+            <span class='label'>状态:</span>
+            <text>{{item.status === 1 ? '在借 ' + item.day + ' 天' : '已还'}}</text>
           </view>
         </view>
         <view class="return">

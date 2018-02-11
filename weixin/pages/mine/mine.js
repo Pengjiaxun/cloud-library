@@ -6,11 +6,13 @@ Page({
   data: {
     userInfo: {},
     hasUserInfo: false,
-    records: []
+    records: [],
+    borrowCount: 0
   },
   onShow() {
     this.getUserInfo()
     this.getRecords()
+    this.getBorrowCount()
   },
   getUserInfo() {
     if (app.globalData.userInfo) {
@@ -48,6 +50,23 @@ Page({
           })
         }
         console.log(_this.data.records)
+      }
+    })
+  },
+  getBorrowCount() {
+    const _this = this
+    wx.request({
+      url: 'http://localhost:8888/log/list',
+      method: 'get',
+      data: {
+        user: app.globalData.userInfo.nickName,
+      },
+      success(res) {
+        if (res.data.result) {
+          _this.setData({
+            borrowCount: res.data.data.length
+          })
+        }
       }
     })
   },
