@@ -8,7 +8,7 @@
                 class="tc">图书管理</el-menu-item>
             <el-menu-item index="users"
                 class="tc">用户管理</el-menu-item>
-            <el-menu-item index="records"
+            <el-menu-item index="logs"
                 class="tc">借阅记录</el-menu-item>
         </el-menu>
     </div>
@@ -22,7 +22,7 @@ export default {
             pathMap: {
                 Books: 'books',
                 Users: 'users',
-                Records: 'records'
+                Logs: 'logs'
             }
         }
     },

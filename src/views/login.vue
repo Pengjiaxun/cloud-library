@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { loginApi } from '../assets/js/config'
+import { loginApi } from '@/config'
 import Store from 'store2'
 
 export default {

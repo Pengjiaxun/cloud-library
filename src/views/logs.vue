@@ -44,7 +44,7 @@
 
 <script>
 import { Loading } from '../assets/js/mixins'
-import { recordApi } from '../assets/js/config'
+import { logApi } from '@/config'
 import { formatDate } from '../assets/js/utils'
 
 export default {
@@ -57,7 +57,7 @@ export default {
     },
     methods: {
         getRecordList() {
-            this.http.get(`${recordApi}/list`)
+            this.http.get(`${logApi}/list`)
                 .then(res => {
                     if (res.data.result) {
                         this.recordList = res.data.data

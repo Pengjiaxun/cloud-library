@@ -132,7 +132,7 @@
 <script>
 import Store from 'store2'
 import { Loading } from '../assets/js/mixins'
-import { bookApi } from '../assets/js/config'
+import { bookApi } from '@/config'
 
 export default {
     name: 'books',

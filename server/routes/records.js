@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 const RecordSchema = require('../schema/record')
-const BookSchema = require('../schema/book')
 
 // 设置跨域
 router.all('*', function (req, res, next) {
@@ -16,54 +15,24 @@ router.all('*', function (req, res, next) {
     }
 })
 
-// 增加借阅记录
-router.post('/add', (req, res) => {
-    const { title, user, status } = req.body
-    if (title && user && status) {
-        const record = new RecordSchema({
-            title,
-            user,
-            date: new Date().getTime(),
-            status
-        })
-        record.save((err, data) => {
+// 用户列表
+router.get('/list', (req, res) => {
+    const { user } = req.query
+    RecordSchema
+        .find({ user }, (err, data) => {
             if (err) {
                 res.json({
                     result: false,
                     msg: err
                 })
             } else {
-                BookSchema.where({ title }).update({ status: status === 1 ? 2 : 1 }, () => {
-                    res.json({
-                        result: true,
-                        msg: status === 1 ? '借阅成功' : '还书成功'
-                    })
+                res.json({
+                    result: true,
+                    msg: '查询成功',
+                    data: data
                 })
             }
         })
-    } else {
-        res.json({
-            result: false,
-            msg: '借阅失败'
-        })
-    }
-})
-
-// 借阅记录列表
-router.get('/list', (req, res) => {
-    RecordSchema.find({}, (err, data) => {
-        if (err) {
-            res.json({
-                result: false,
-                msg: err
-            })
-        } else {
-            res.json({
-                result: true,
-                data: data
-            })
-        }
-    })
 })
 
 module.exports = router

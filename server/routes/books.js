@@ -27,9 +27,23 @@ router.post('/record', (req, res) => {
         } else {
             // 录入的图书不存在，则录入
             if (data.length === 0) {
-                insert(req.body)
-                res.json({
-                    result: true
+                insert(req.body).then(r => {
+                    if (r.result) {
+                        res.json({
+                            result: true,
+                            msg: '录入成功'
+                        })
+                    } else {
+                        res.json({
+                            result: false,
+                            msg: r.msg
+                        })
+                    }
+                }).catch(err => {
+                    res.json({
+                        result: false,
+                        msg: err
+                    })
                 })
             } else {
                 res.json({
@@ -41,25 +55,27 @@ router.post('/record', (req, res) => {
     })
 })
 function insert({ title, image, rating, author, author_intro, pubdate, pages, summary = '无', publisher }) {
-    let book = new BookSchema({
-        title,
-        image,
-        rating: rating.average || '无',
-        author: author[0] || '未知',
-        author_intro,
-        pages,
-        summary,
-        pubdate,
-        publisher,
-        record_date: new Date().getTime(),
-        status: 1
-    })
-    book.save((err, data) => {
-        if (err) {
-            console.log(err)
-        } else {
-            console.log('record successfully')
-        }
+    return new Promise((resolve, reject) => {
+        let book = new BookSchema({
+            title,
+            image,
+            rating: rating.average || '无',
+            author: author[0] || '未知',
+            author_intro,
+            pages,
+            summary,
+            pubdate,
+            publisher,
+            record_date: new Date().getTime(),
+            status: 1
+        })
+        book.save((err, data) => {
+            if (err) {
+                reject({ result: false, msg: err })
+            } else {
+                resolve({ result: true, msg: '', data: data })
+            }
+        })
     })
 }
 

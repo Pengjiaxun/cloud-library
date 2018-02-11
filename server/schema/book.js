@@ -7,9 +7,9 @@ const BookSchema = new Schema({
     rating: Number,
     author: String,
     author_intro: String,
-    pages: Number,
+    pages: String,
     summary: String,
-    pubdate: Date,
+    pubdate: String,
     publisher: String,
     record_date: String,
     status: Number // 0 = 所有，1 = 在架，2 = 借出

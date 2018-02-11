@@ -63,7 +63,7 @@
 </template>
 
 <script>
-import { userApi } from '../assets/js/config'
+import { userApi } from '@/config'
 import { Loading } from '../assets/js/mixins'
 
 export default {

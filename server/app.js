@@ -12,10 +12,12 @@ app.use(bodyParser.urlencoded({ extended: true }))
 // 引入 路由模块
 var booksRouter = require('./routes/books')
 var usersRouter = require('./routes/users')
+var logRouter = require('./routes/logs')
 var recordRouter = require('./routes/records')
 
 app.use('/book', booksRouter)
 app.use('/user', usersRouter)
+app.use('/log', logRouter)
 app.use('/record', recordRouter)
 
 app.listen(8888, function () {
