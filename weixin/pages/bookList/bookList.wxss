@@ -42,5 +42,9 @@
   padding: 10rpx;
 }
 
+.book-item .book-info {
+  width: 100%;
+}
+
 .book-item .more-btn {
 }

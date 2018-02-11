@@ -26,7 +26,7 @@ Page({
         duration: 1800
       })
       return false
-    }else if (!this.data.pwd) {
+    } else if (!this.data.pwd) {
       wx.showToast({
         title: '密码不能为空',
         icon: 'loading',
@@ -36,7 +36,7 @@ Page({
     }
     return true
   },
-  login: function () {
+  login() {
     console.log(this.data.account, this.data.pwd)
     if (this.verify()) {
       wx.setStorage({
@@ -45,7 +45,7 @@ Page({
       })
       wx.switchTab({
         url: '../mine/mine',
-        complete: function(e) {
+        complete: function (e) {
           console.log(e)
         }
       })
@@ -58,7 +58,8 @@ Page({
     wx.getStorage({
       key: 'isLogin',
       success: function (res) {
-        if(res && res.data) {
+        if (res && res.data) {
+          console.log(res, 'res')
           if (res.data == '1') {
             wx.switchTab({
               // url: '../mine/mine',

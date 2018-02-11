@@ -32,6 +32,21 @@ App({
         }
       }
     })
+
+    // 验证是否登录
+    wx.getStorage({
+      key: 'isLogin',
+      success(res) {
+        if (res && res.data !== 1) {
+          wx.navigateTo({
+            url: './pages/login/login',
+            success(e) {
+              console.log(e)
+            }
+          })
+        }
+      }
+    })
   },
   globalData: {
     userInfo: null

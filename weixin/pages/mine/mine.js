@@ -49,7 +49,6 @@ Page({
             records: data
           })
         }
-        console.log(_this.data.records)
       }
     })
   },
