@@ -14,7 +14,8 @@
                 element-loading-text="拼命加载中"
                 element-loading-spinner="el-icon-loading"
                 element-loading-background="rgba(0, 0, 0, 0.8)">
-                <el-table-column label="序号">
+                <el-table-column label="序号"
+                    width="80">
                     <template slot-scope="scope">
                         {{scope.$index + 1}}
                     </template>

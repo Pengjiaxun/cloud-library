@@ -16,7 +16,8 @@
                 element-loading-text="拼命加载中"
                 element-loading-spinner="el-icon-loading"
                 element-loading-background="rgba(0, 0, 0, 0.8)">
-                <el-table-column label="序号">
+                <el-table-column label="序号"
+                    width="80">
                     <template slot-scope="scope">
                         {{scope.$index + 1}}
                     </template>
@@ -24,9 +25,9 @@
                 <el-table-column prop="name"
                     label="用户名">
                 </el-table-column>
-                <!-- <el-table-column prop="pwd"
+                <el-table-column prop="pwd"
                     label="密码">
-                </el-table-column> -->
+                </el-table-column>
                 <el-table-column width="80"
                     label="操作">
                     <template slot-scope="scope">
