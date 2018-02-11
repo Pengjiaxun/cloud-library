@@ -58,8 +58,8 @@ export default {
                         } else {
                             this.$message.error(res.data.msg)
                         }
-                    }).catch(err => {
-                        this.$message.error(err)
+                    }).catch(error => {
+                        this.$message.error(error)
                     })
                 }
             })

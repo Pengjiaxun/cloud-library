@@ -143,12 +143,14 @@ export default {
                             } else {
                                 this.$message.error('删除失败')
                             }
-                        }).catch(() => {
-                            this.$message({
-                                type: 'info',
-                                message: '已取消'
-                            })
+                        }).catch((error) => {
+                            this.$message.error(error)
                         })
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '已取消'
+                    })
                 })
             }
         }
