@@ -103,10 +103,22 @@ function insertRecord(body) {
 }
 function updateBookStatus(body) {
     const { title, status } = body
+    let options = {}
+    // 借书时，书籍的借阅次数才增加 1
+    if (status === 1) {
+        options = {
+            status: 2,
+            $inc: { borrowCount: 1 }
+        }
+    } else {
+        options = {
+            status: 1
+        }
+    }
     return new Promise((resolve, reject) => {
         BookSchema
             .where({ title })
-            .update({ status: status === 1 ? 2 : 1 }, (err, data) => {
+            .update(options, (err, data) => {
                 if (err) {
                     reject({ result: false, msg: err })
                 } else {

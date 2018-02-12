@@ -25,7 +25,8 @@
       </view>
       <view class="status">
         <span class='label'>当前状态:</span>
-        <text>{{bookDetail.status === 1 ? '在架' : '借出'}}</text>
+        <text class="on" wx:if="{{bookDetail.status === 1}}">在架</text>
+        <text class="out" wx:else>借出</text>
       </view>
     </view>
   </view>

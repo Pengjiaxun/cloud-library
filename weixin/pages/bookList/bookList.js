@@ -3,9 +3,10 @@ const date = require('../../utils/util.js')
 
 Page({
   data: {
-    activeIndex: 1,
+    activeIndex: 2,
     searchKey: '',
-    bookList: []
+    bookList: [],
+    orderList: []
   },
   onLoad() {
     // console.log('123')
@@ -13,9 +14,10 @@ Page({
       enableDebug: true
     })
     this.getBookList()
+    this.getOrderList()
   },
   switchTab(event) {
-    this.setData({ activeIndex: +event.target.dataset.index})
+    this.setData({ activeIndex: +event.target.dataset.index })
   },
   bindKeyInput(e) {
     this.setData({
@@ -45,7 +47,7 @@ Page({
       data: {
         status: 0
       },
-      success (res) {
+      success(res) {
         if (res.data.result) {
           const data = res.data.data
           data.forEach(item => {
@@ -53,6 +55,23 @@ Page({
           })
           _this.setData({
             bookList: data
+          })
+        }
+      }
+    })
+  },
+  getOrderList() {
+    const _this = this
+    wx.request({
+      url: 'http://localhost:8888/book/list',
+      data: {
+        status: 0,
+        order: true
+      },
+      success(res) {
+        if (res.data.result) {
+          _this.setData({
+            orderList: res.data.data
           })
         }
       }

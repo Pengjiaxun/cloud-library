@@ -14,8 +14,8 @@
     <view class="all-book list" wx:if="{{activeIndex === 1}}">
       <!-- 搜索书籍 -->
       <view class='search'>
-        <input type='text' placeholder='输入书名或作者' placeholder-style='color: #000;' bindinput='bindKeyInput'/>
-        <icon type="search" size="15" bindtap='search'/>
+        <input type='text' placeholder='输入书名或作者' placeholder-style='color: #000;' bindinput='bindKeyInput' />
+        <icon type="search" size="15" bindtap='search' />
       </view>
       <view wx:for="{{bookList}}" wx:key="index" class="book-item" data-id="{{item._id}}" data-title="{{item.title}}" bindtap="toBookDetail">
         <view class="book-img">
@@ -38,20 +38,21 @@
 
     <!-- 借阅排行列表 -->
     <view class="rank-list list" wx:else>
-      <view class="book-item">
+      <view wx:for="{{orderList}}" wx:key="index" class="book-item" data-id="{{item._id}}" data-title="{{item.title}}" bindtap="toBookDetail">
         <view class="book-img">
-          <span class='index'>1</span>
-          <image src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg"></image>
+          <view class='index first3' wx:if="index === 0 || index === 1 || index === 2">{{index + 1}}</view>
+          <view class='index' wx:else>{{index + 1}}</view>
+          <image mode="aspectFit" src="{{item.image}}"></image>
         </view>
         <view class="book-info">
           <view class="title">
-            <text>JavaScript权威指南</text>
+            <text>{{item.title}}</text>
           </view>
           <view class="author">
-            <text>作者:史蒂芬森</text>
+            <text>作者:{{item.author}}</text>
           </view>
           <view class="issued">
-            <text>借阅次数:100次</text>
+            <text>借阅次数: {{item.borrowCount}} 次</text>
           </view>
         </view>
         <view class="more-btn">></view>

@@ -67,6 +67,7 @@ function insert({ title, image, rating, author, author_intro, pubdate, pages, su
             pubdate,
             publisher,
             record_date: new Date().getTime(),
+            borrowCount: 0,
             status: 1
         })
         book.save((err, data) => {
@@ -99,7 +100,7 @@ router.post('/offshelf', (req, res) => {
 
 // 获取图书信息
 router.get('/list', (req, res) => {
-    const { status, title } = req.query
+    const { status, title, order } = req.query
     const filter = {}
     if (status !== '0') {
         filter.status = Number(status)
@@ -107,7 +108,25 @@ router.get('/list', (req, res) => {
     if (title) {
         filter.title = title
     }
-    if (status !== '0') {
+    if (order) {
+        BookSchema
+            .find()
+            .where(filter)
+            .sort({ borrowCount: -1 })
+            .exec((err, data) => {
+                if (err) {
+                    res.json({
+                        result: false,
+                        msg: err
+                    })
+                } else {
+                    res.json({
+                        result: true,
+                        data: data
+                    })
+                }
+            })
+    } else {
         BookSchema
             .find()
             .where(filter)
@@ -124,20 +143,6 @@ router.get('/list', (req, res) => {
                     })
                 }
             })
-    } else {
-        BookSchema.find(filter, (err, data) => {
-            if (err) {
-                res.json({
-                    result: false,
-                    msg: err
-                })
-            } else {
-                res.json({
-                    result: true,
-                    data: data
-                })
-            }
-        })
     }
 })
 
