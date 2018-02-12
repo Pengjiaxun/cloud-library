@@ -135,9 +135,10 @@ router.get('/list', (req, res) => {
     if (title) {
         filter.title = title
     }
-    if (Number(status)) {
-        filter.status = status
+    if (status !== '0') {
+        filter.status = Number(status)
     }
+    console.log(filter, 'filter')
     RecordSchema
         .find(filter)
         .sort({ date: 'asc' })

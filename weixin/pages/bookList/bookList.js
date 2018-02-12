@@ -3,7 +3,7 @@ const date = require('../../utils/util.js')
 
 Page({
   data: {
-    activeIndex: 2,
+    activeIndex: 1,
     searchKey: '',
     bookList: [],
     orderList: []
