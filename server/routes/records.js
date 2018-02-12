@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const BookSchema = require('../schema/book')
 const RecordSchema = require('../schema/record')
 
 // 设置跨域
@@ -15,11 +16,116 @@ router.all('*', function (req, res, next) {
     }
 })
 
-// 用户列表
+// 增加借阅记录
+router.post('/add', (req, res) => {
+    insertRecord(req.body).then(res1 => {
+        if (res1.result) {
+            updateBookStatus(req.body).then(res2 => {
+                if (res2.result) {
+                    res.json({
+                        result: true,
+                        msg: '借阅成功'
+                    })
+                } else {
+                    res.json({
+                        result: false,
+                        msg: res2.msg
+                    })
+                }
+            }).catch(err => {
+                res.json({
+                    result: false,
+                    msg: err
+                })
+            })
+        } else {
+            res.json({
+                result: false,
+                msg: res1.msg
+            })
+        }
+    }).catch(err => {
+        res.json({
+            result: false,
+            msg: err
+        })
+    })
+})
+function insertRecord(body) {
+    const { title, user, status, image } = body
+    return new Promise((resolve, reject) => {
+        RecordSchema.find({ title, user }, (err, data) => {
+            if (err) {
+                reject({ result: false, msg: err })
+            } else {
+                if (data.length === 0) {
+                    const record = new RecordSchema({
+                        title,
+                        user,
+                        image,
+                        status,
+                        date: new Date().getTime(),
+                        returnDate: ''
+                    })
+                    record.save((err, data) => {
+                        if (err) {
+                            reject({ result: false, msg: err })
+                        } else {
+                            resolve({ result: true, msg: '' })
+                        }
+                    })
+                } else {
+                    if (status === 1) {
+                        RecordSchema
+                            .where({ title, user })
+                            .update({ status, date: new Date().getTime(), returnDate: '' }, (err) => {
+                                if (err) {
+                                    reject({ result: false, msg: err })
+                                } else {
+                                    resolve({ result: true, msg: '' })
+                                }
+                            })
+                    } else {
+                        RecordSchema
+                            .where({ title, user })
+                            .update({ status, returnDate: new Date().getTime() }, (err) => {
+                                if (err) {
+                                    reject({ result: false, msg: err })
+                                } else {
+                                    resolve({ result: true, msg: '' })
+                                }
+                            })
+                    }
+                }
+            }
+        })
+    })
+}
+function updateBookStatus(body) {
+    const { title, status } = body
+    return new Promise((resolve, reject) => {
+        BookSchema
+            .where({ title })
+            .update({ status: status === 1 ? 2 : 1 }, (err, data) => {
+                if (err) {
+                    reject({ result: false, msg: err })
+                } else {
+                    resolve({ result: true, msg: '' })
+                }
+            })
+    })
+}
+
+// 借阅记录列表
 router.get('/list', (req, res) => {
-    const { user } = req.query
+    const filter = {}
+    if (req.query.user) {
+        filter.user = req.query.user
+    }
     RecordSchema
-        .find({ user }, (err, data) => {
+        .find(filter)
+        .sort({ date: 'asc' })
+        .exec((err, data) => {
             if (err) {
                 res.json({
                     result: false,
@@ -28,7 +134,6 @@ router.get('/list', (req, res) => {
             } else {
                 res.json({
                     result: true,
-                    msg: '查询成功',
                     data: data
                 })
             }

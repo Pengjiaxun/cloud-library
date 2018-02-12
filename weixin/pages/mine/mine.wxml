@@ -5,7 +5,7 @@
       <text>{{userInfo.nickName}}</text>
     </view>
     <view class='user-info'>
-      <text class="borrow-count">已借：{{borrowCount}} 次 </text>
+      <!-- <text class="borrow-count">已借：{{borrowCount}} 次 </text> -->
       <!-- |  <text class='rank'>排行: 1</text> -->
     </view>
   </view>

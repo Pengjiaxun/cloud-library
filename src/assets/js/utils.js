@@ -4,7 +4,7 @@
  * @param {string} [format='yyyy-mm-dd hh:mm:ss'] 格式化形式
  * @returns 2017-03-03 15:00:00
  */
-export const formatDate = function (timestamp, format = 'yyyy-mm-dd hh:mm:ss', type = 'js') {
+export const formatDate = function (timestamp, format = 'yyyy-mm-dd', type = 'js') {
     function fixZero(num, length) {
         let str = '' + num
         let len = str.length

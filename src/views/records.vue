@@ -27,13 +27,19 @@
                     label="借阅书籍">
                 </el-table-column>
                 <el-table-column prop="date"
-                    label="借阅时间">
+                    label="借阅日期">
                     <template slot-scope="scope">
                         {{format(scope.row.date)}}
                     </template>
                 </el-table-column>
+                <el-table-column prop="returnDate"
+                    label="归还日期">
+                    <template slot-scope="scope">
+                        {{scope.row.returnDate ? format(scope.row.returnDate) : ''}}
+                    </template>
+                </el-table-column>
                 <el-table-column prop="status"
-                    label="当前状态">
+                    label="状态">
                     <template slot-scope="scope">
                         {{scope.row.status === 1 ? '借阅中' : '已归还'}}
                     </template>
@@ -45,7 +51,7 @@
 
 <script>
 import { Loading } from '../assets/js/mixins'
-import { logApi } from '@/config'
+import { recordApi } from '@/config'
 import { formatDate } from '../assets/js/utils'
 
 export default {
@@ -58,7 +64,7 @@ export default {
     },
     methods: {
         getRecordList() {
-            this.http.get(`${logApi}/list`)
+            this.http.get(`${recordApi}/list`)
                 .then(res => {
                     if (res.data.result) {
                         this.recordList = res.data.data

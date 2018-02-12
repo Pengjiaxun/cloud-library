@@ -37,7 +37,7 @@ Page({
     const { title, image } = this.data.bookDetail
     const _this = this
     wx.request({
-      url: 'http://localhost:8888/log/add',
+      url: 'http://localhost:8888/record/add',
       method: 'POST',
       data: {
         title,

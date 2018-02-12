@@ -6,13 +6,11 @@ Page({
   data: {
     userInfo: {},
     hasUserInfo: false,
-    records: [],
-    borrowCount: 0
+    records: []
   },
   onShow() {
     this.getUserInfo()
     this.getRecords()
-    this.getBorrowCount()
   },
   getUserInfo() {
     if (app.globalData.userInfo) {
@@ -52,28 +50,11 @@ Page({
       }
     })
   },
-  getBorrowCount() {
-    const _this = this
-    wx.request({
-      url: 'http://localhost:8888/log/list',
-      method: 'get',
-      data: {
-        user: app.globalData.userInfo.nickName,
-      },
-      success(res) {
-        if (res.data.result) {
-          _this.setData({
-            borrowCount: res.data.data.length
-          })
-        }
-      }
-    })
-  },
   returnBack(option) {
     const { title, user, image } = option.currentTarget.dataset.detail
     const _this = this
     wx.request({
-      url: 'http://localhost:8888/log/add',
+      url: 'http://localhost:8888/record/add',
       method: 'POST',
       data: {
         title,
