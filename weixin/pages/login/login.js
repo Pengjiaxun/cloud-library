@@ -38,10 +38,15 @@ Page({
   },
   login() {
     console.log(this.data.account, this.data.pwd)
+    const _this = this
     if (this.verify()) {
       wx.setStorage({
         key: 'isLogin',
         data: '1',
+      })
+      wx.setStorage({
+        key: 'user',
+        data: _this.data.account,
       })
       wx.switchTab({
         url: '../mine/mine',

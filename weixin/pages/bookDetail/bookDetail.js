@@ -41,7 +41,7 @@ Page({
       data: {
         title,
         image,
-        user: app.globalData.userInfo.nickName,
+        user: app.globalData.user,
         status: 1
       },
       success(res) {

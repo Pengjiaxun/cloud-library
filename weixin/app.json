@@ -4,8 +4,7 @@
     "pages/mine/mine",
     "pages/login/login",
     "pages/bookDetail/bookDetail",
-    "pages/index/index",
-    "pages/logs/logs"
+    "pages/index/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -36,7 +36,7 @@ App({
     // 验证是否登录
     wx.getStorage({
       key: 'isLogin',
-      success(res) {
+      success: res => {
         if (res && res.data !== 1) {
           wx.navigateTo({
             url: './pages/login/login',
@@ -45,10 +45,32 @@ App({
             }
           })
         }
+      },
+      fail(res) {
+        wx.navigateTo({
+          url: './pages/login/login',
+          success(e) {
+            console.log(e)
+          }
+        })
+      }
+    })
+
+    // 获取登录账号
+    wx.getStorage({
+      key: 'user',
+      success: res => {
+        if (res && res.data) {
+          this.globalData.user = res.data
+        }
+      },
+      fail(res) {
+        console.log(res)
       }
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    user: null
   }
 })
