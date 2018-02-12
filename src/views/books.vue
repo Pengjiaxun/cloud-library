@@ -146,15 +146,15 @@ export default {
             bookData: [],
             bookStatus: [
                 {
-                    label: '所有',
+                    label: '所有图书',
                     value: 0
                 },
                 {
-                    label: '在架',
+                    label: '在架图书',
                     value: 1
                 },
                 {
-                    label: '借出',
+                    label: '在借图书',
                     value: 2
                 }],
             status: 0

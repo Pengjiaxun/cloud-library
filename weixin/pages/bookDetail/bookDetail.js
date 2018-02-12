@@ -28,7 +28,6 @@ Page({
               bookDetail: res.data.data[0]
             })
           }
-          console.log(_this.data.bookDetail)
         }
       })
     }

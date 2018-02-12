@@ -4,7 +4,23 @@
             <el-breadcrumb-item :to="{ path: '/records' }">借阅记录</el-breadcrumb-item>
         </el-breadcrumb>
         <div class="header">
-
+            <el-select v-model="status"
+                placeholder="筛选"
+                @change="getRecordList">
+                <el-option v-for="item in recordStatus"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value">
+                </el-option>
+            </el-select>
+            <el-input v-model="key"
+                prefix-icon="el-icon-search"
+                autofocus
+                placeholder="请输入图书名字进行搜索"
+                clearable></el-input>
+            <el-button type="primary"
+                plain
+                @click="getRecordList">搜索</el-button>
         </div>
         <div class="content">
             <el-table :data="recordList"
@@ -59,21 +75,43 @@ export default {
     mixins: [Loading],
     data() {
         return {
-            recordList: []
+            recordList: [],
+            recordStatus: [
+                {
+                    label: '所有记录',
+                    value: 0
+                },
+                {
+                    label: '借阅中',
+                    value: 1
+                },
+                {
+                    label: '已归还',
+                    value: 2
+                }],
+            status: 0,
+            key: ''
         }
     },
     methods: {
         getRecordList() {
-            this.http.get(`${recordApi}/list`)
-                .then(res => {
-                    if (res.data.result) {
-                        this.recordList = res.data.data
-                    } else {
-                        this.$message.error('查询失败')
-                    }
-                }).catch(err => {
-                    this.$message.error(err)
-                })
+            this.showLoading()
+            this.http.get(`${recordApi}/list`, {
+                params: {
+                    status: this.status,
+                    title: this.key
+                }
+            }).then(res => {
+                if (res.data.result) {
+                    this.recordList = res.data.data
+                } else {
+                    this.$message.error('查询失败')
+                }
+                this.hideLoading()
+            }).catch(err => {
+                this.hideLoading()
+                this.$message.error(err)
+            })
         },
         format(t) {
             return formatDate(Number(t))
@@ -81,7 +119,6 @@ export default {
     },
     created() {
         this.getRecordList()
-        console.log(formatDate(1234567890000), 'formatDate')
     }
 }
 </script>

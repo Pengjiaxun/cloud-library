@@ -118,9 +118,13 @@ function updateBookStatus(body) {
 
 // 借阅记录列表
 router.get('/list', (req, res) => {
+    const { title, status } = req.query
     const filter = {}
-    if (req.query.user) {
-        filter.user = req.query.user
+    if (title) {
+        filter.title = title
+    }
+    if (Number(status)) {
+        filter.status = status
     }
     RecordSchema
         .find(filter)
