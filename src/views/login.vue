@@ -1,6 +1,6 @@
 <template>
     <div class="login-container">
-        <div class="title fs-28 white">云空间图书馆</div>
+        <div class="title white">云空间图书馆</div>
         <div class="main">
             <el-form :model="user"
                 :rules="rules"
@@ -82,9 +82,10 @@ export default {
   flex-direction: column;
   .title {
     font-family: "Times New Roman", Times, serif;
-    font-weight: 500;
+    font-weight: bolder;
     letter-spacing: 4px;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
+    font-size: 36px;
   }
   .main {
     width: 30%;
