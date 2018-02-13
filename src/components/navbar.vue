@@ -4,7 +4,8 @@
             <ul>
                 <li class="title fl"
                     @click="toIndex">云空间图书管理系统</li>
-                <li class="user-name fs-16">您好：{{username}}</li>
+                <li class="user-name fs-16">
+                    <span style="font-weight: normal;">您好: </span>{{username}}</li>
                 <li class="log-out fs-14"
                     @click="logOut">退出</li>
             </ul>
