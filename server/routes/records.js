@@ -135,7 +135,7 @@ router.get('/list', (req, res) => {
     if (title) {
         filter.title = title
     }
-    if (status !== '0') {
+    if (status && status !== '0') {
         filter.status = Number(status)
     }
     console.log(filter, 'filter')
