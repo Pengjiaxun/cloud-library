@@ -1,49 +1,59 @@
 /* pages/bookList/bookList.wxss */
 
 .tab {
-  display: flex;
-  padding: 0 40rpx;
-  margin-bottom: 20rpx;
+    display: flex;
+    padding: 0 40rpx;
+    margin-bottom: 20rpx;
 }
 
 .tab-item {
-  flex: 1;
-  width: 20rpx;
-  font-size: 28rpx;
-  text-align: center;
-  padding: 10rpx 0;
+    flex: 1;
+    width: 20rpx;
+    font-size: 28rpx;
+    text-align: center;
+    padding: 10rpx 0;
 }
 
 .active {
-  font-weight: bold;
-  border-bottom: 6rpx solid #62c0e2;
+    font-weight: bold;
+    border-bottom: 6rpx solid #62c0e2;
 }
 
 .main {
-  height: 100%;
-  padding: 0 40rpx;
-  font-size: 30rpx;
+    height: 100%;
+    padding: 0 40rpx;
+    font-size: 30rpx;
+}
+
+.main .empty-container {
+    padding: 100rpx;
+    text-align: center;
+}
+
+.main .empty-container .add-wish {
+    color: red;
 }
 
 .list .search {
-  display: flex;
-  margin-bottom: 20rpx;
-  padding: 8rpx 20rpx;
-  font-size: 28rpx;
-  border-radius: 20rpx;
-  border: 4rpx solid #62c0e2;
+    display: flex;
+    margin-bottom: 20rpx;
+    padding: 8rpx 20rpx;
+    font-size: 28rpx;
+    border-radius: 20rpx;
+    border: 4rpx solid #62c0e2;
 }
 
 .list .search input {
-  flex: 1;
+    flex: 1;
+    font-size: 26rpx;
 }
 
 .list .search icon {
-  padding: 10rpx;
+    padding: 10rpx;
 }
 
 .book-item .book-info {
-  width: 100%;
+    width: 100%;
 }
 
 .book-item .more-btn {

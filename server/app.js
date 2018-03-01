@@ -13,10 +13,12 @@ app.use(bodyParser.urlencoded({ extended: true }))
 var booksRouter = require('./routes/books')
 var usersRouter = require('./routes/users')
 var recordRouter = require('./routes/records')
+var wishRouter = require('./routes/wishes')
 
 app.use('/book', booksRouter)
 app.use('/user', usersRouter)
 app.use('/record', recordRouter)
+app.use('/wish', wishRouter)
 
 app.listen(8888, function () {
     console.log('server connect, listening at http://localhost:8888')

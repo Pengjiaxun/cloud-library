@@ -102,7 +102,7 @@ router.post('/offshelf', (req, res) => {
 router.get('/list', (req, res) => {
     const { status, title, order } = req.query
     const filter = {}
-    if (status !== '0') {
+    if (status && status !== '0') {
         filter.status = Number(status)
     }
     if (title) {

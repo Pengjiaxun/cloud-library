@@ -1,62 +1,77 @@
 <view>
-  <!-- 导航tab -->
-  <view class="tab">
-    <view class="tab-item {{activeIndex === 1 ? 'active' : ''}}" data-index="1" bindtap="switchTab">
-      所有书籍
-    </view>
-    <view class="tab-item {{activeIndex === 2 ? 'active' : ''}}" data-index="2" bindtap="switchTab">
-      借阅排行
-    </view>
-  </view>
-  <!-- 页面内容 -->
-  <view class="main">
-    <!-- 所有书籍列表 -->
-    <view class="all-book list" wx:if="{{activeIndex === 1}}">
-      <!-- 搜索书籍 -->
-      <view class='search'>
-        <input type='text' placeholder='输入书名或作者' placeholder-style='color: #000;' bindinput='bindKeyInput' />
-        <icon type="search" size="15" bindtap='search' />
-      </view>
-      <view wx:for="{{bookList}}" wx:key="index" class="book-item" data-id="{{item._id}}" data-title="{{item.title}}" bindtap="toBookDetail">
-        <view class="book-img">
-          <image mode="aspectFit" src="{{item.image}}"></image>
+    <!-- 导航tab -->
+    <view class="tab">
+        <view class="tab-item {{activeIndex === 1 ? 'active' : ''}}" data-index="1" bindtap="switchTab">
+            所有书籍
         </view>
-        <view class="book-info">
-          <view class="title">
-            <text>{{item.title}}</text>
-          </view>
-          <view class="author">
-            <text>作者: {{item.author}}</text>
-          </view>
-          <view class="issued">
-            <text>上架时间: {{item.record_date}}</text>
-          </view>
+        <view class="tab-item {{activeIndex === 2 ? 'active' : ''}}" data-index="2" bindtap="switchTab">
+            借阅排行
         </view>
-        <view class="more-btn">></view>
-      </view>
     </view>
 
-    <!-- 借阅排行列表 -->
-    <view class="rank-list list" wx:else>
-      <view wx:for="{{orderList}}" wx:key="index" class="book-item" data-id="{{item._id}}" data-title="{{item.title}}" bindtap="toBookDetail">
-        <view class="book-img">
-          <view class='index first3' wx:if="index === 0 || index === 1 || index === 2">{{index + 1}}</view>
-          <view class='index' wx:else>{{index + 1}}</view>
-          <image mode="aspectFit" src="{{item.image}}"></image>
+    <!-- 页面内容 -->
+    <view class="main">
+
+        <!-- 所有书籍列表 -->
+        <view class="all-book list" wx:if="{{activeIndex === 1}}">
+
+            <!-- 搜索输入框 -->
+            <view class='search'>
+                <input type='text' placeholder='输入书名' placeholder-style='color: #000;' bindinput='bindKeyInput' value="{{searchKey}}" />
+                <icon wx:if='{{searchKey}}' type="cancel" size='15' bindtap='resetList' />
+                <icon type="search" size="15" bindtap='search' />
+            </view>
+
+            <!-- 列表 -->
+            <view wx:if="{{bookList.length !== 0}}">
+                <view wx:for="{{bookList}}" wx:key="index" class="book-item" data-id="{{item._id}}" data-title="{{item.title}}" bindtap="toBookDetail">
+                    <view class="book-img">
+                        <image mode="aspectFit" src="{{item.image}}"></image>
+                    </view>
+                    <view class="book-info">
+                        <view class="title">
+                            <text>{{item.title}}</text>
+                        </view>
+                        <view class="author">
+                            <text>作者: {{item.author}}</text>
+                        </view>
+                        <view class="issued">
+                            <text>上架时间: {{item.record_date}}</text>
+                        </view>
+                    </view>
+                    <view class="more-btn">></view>
+                </view>
+            </view>
+
+            <!-- 列表为空时 -->
+            <view class="empty-container" wx:else>
+                <view>图书馆内没有找到该书!</view><br/>
+                <text class="add-wish" bindtap="addWish"> 加入心愿单 </text>
+                <text>,管理员会尽快采购哦！</text>
+            </view>
         </view>
-        <view class="book-info">
-          <view class="title">
-            <text>{{item.title}}</text>
-          </view>
-          <view class="author">
-            <text>作者:{{item.author}}</text>
-          </view>
-          <view class="issued">
-            <text>借阅次数: {{item.borrowCount}} 次</text>
-          </view>
+
+        <!-- 借阅排行列表 -->
+        <view class="rank-list list" wx:else>
+            <view wx:for="{{orderList}}" wx:key="index" class="book-item" data-id="{{item._id}}" data-title="{{item.title}}" bindtap="toBookDetail">
+                <view class="book-img">
+                    <view class='index first3' wx:if="index === 0 || index === 1 || index === 2">{{index + 1}}</view>
+                    <view class='index' wx:else>{{index + 1}}</view>
+                    <image mode="aspectFit" src="{{item.image}}"></image>
+                </view>
+                <view class="book-info">
+                    <view class="title">
+                        <text>{{item.title}}</text>
+                    </view>
+                    <view class="author">
+                        <text>作者:{{item.author}}</text>
+                    </view>
+                    <view class="issued">
+                        <text>借阅次数: {{item.borrowCount}} 次</text>
+                    </view>
+                </view>
+                <view class="more-btn">></view>
+            </view>
         </view>
-        <view class="more-btn">></view>
-      </view>
     </view>
-  </view>
 </view>

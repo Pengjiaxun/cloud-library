@@ -10,6 +10,8 @@
                 class="tc">用户管理</el-menu-item>
             <el-menu-item index="records"
                 class="tc">借阅记录</el-menu-item>
+            <el-menu-item index="wishes"
+                class="tc">愿望清单</el-menu-item>
         </el-menu>
     </div>
 </template>
@@ -22,7 +24,8 @@ export default {
             pathMap: {
                 Books: 'books',
                 Users: 'users',
-                Records: 'records'
+                Records: 'records',
+                Wishes: 'wishes'
             }
         }
     },
