@@ -132,7 +132,7 @@
 <script>
 import Store from 'store2'
 import { Loading } from '../assets/js/mixins'
-import { bookApi } from '@/config'
+import { api } from '@/config'
 
 export default {
     name: 'books',
@@ -185,7 +185,7 @@ export default {
         },
         searchStore() {
             this.showLoading()
-            this.http.get(`${bookApi}/list`, {
+            this.http.get(`${api.bookApi}/list`, {
                 params: {
                     status: this.status,
                     title: this.keyStore
@@ -203,7 +203,7 @@ export default {
             })
         },
         record(data) {
-            this.http.post(`${bookApi}/record`, data)
+            this.http.post(`${api.bookApi}/record`, data)
                 .then(res => {
                     if (res.data.result) {
                         this.$message.success('录入成功')
@@ -217,7 +217,7 @@ export default {
         },
         getBookData() {
             this.showLoading()
-            this.http.get(`${bookApi}/list`, {
+            this.http.get(`${api.bookApi}/list`, {
                 params: {
                     status: this.status,
                     title: this.keyStore
@@ -243,7 +243,7 @@ export default {
                 cancelButtonText: '取消',
                 type: 'warning'
             }).then(() => {
-                this.http.post(`${bookApi}/offshelf`, { title })
+                this.http.post(`${api.bookApi}/offshelf`, { title })
                     .then(res => {
                         if (res.data.result) {
                             this.$message.success('操作成功')

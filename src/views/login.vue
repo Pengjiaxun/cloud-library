@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { loginApi } from '@/config'
+import { api } from '@/config'
 import Store from 'store2'
 
 export default {
@@ -47,7 +47,7 @@ export default {
         login() {
             this.$refs.loginForm.validate((valid) => {
                 if (valid) {
-                    this.http.post(loginApi, {
+                    this.http.post(api.loginApi, {
                         name: this.user.name,
                         pwd: this.user.pwd
                     }).then(res => {

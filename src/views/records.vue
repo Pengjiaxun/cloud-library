@@ -67,7 +67,7 @@
 
 <script>
 import { Loading } from '../assets/js/mixins'
-import { recordApi } from '@/config'
+import { api } from '@/config'
 import { formatDate } from '../assets/js/utils'
 
 export default {
@@ -96,7 +96,7 @@ export default {
     methods: {
         getRecordList() {
             this.showLoading()
-            this.http.get(`${recordApi}/list`, {
+            this.http.get(`${api.recordApi}/list`, {
                 params: {
                     status: this.status,
                     title: this.key

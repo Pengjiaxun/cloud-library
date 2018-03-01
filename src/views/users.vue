@@ -64,7 +64,7 @@
 </template>
 
 <script>
-import { userApi } from '@/config'
+import { api } from '@/config'
 import { Loading } from '../assets/js/mixins'
 
 export default {
@@ -93,7 +93,7 @@ export default {
         },
         getUserList() {
             this.showLoading()
-            this.http.get(`${userApi}/list`)
+            this.http.get(`${api.userApi}/list`)
                 .then(res => {
                     if (res.data.result) {
                         this.userList = res.data.data
@@ -109,7 +109,7 @@ export default {
         addUser() {
             this.$refs.userForm.validate((valid) => {
                 if (valid) {
-                    this.http.post(`${userApi}/add`, {
+                    this.http.post(`${api.userApi}/add`, {
                         name: this.user.name,
                         pwd: this.user.pwd
                     }).then(res => {
@@ -135,7 +135,7 @@ export default {
                     cancelButtonText: '取消',
                     type: 'warning'
                 }).then(() => {
-                    this.http.post(`${userApi}/del`, { name })
+                    this.http.post(`${api.userApi}/del`, { name })
                         .then(res => {
                             if (res.data.result) {
                                 this.$message.success('删除成功')
