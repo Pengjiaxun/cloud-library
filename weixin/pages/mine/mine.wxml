@@ -12,8 +12,10 @@
     <view class="main">
         <!-- 借阅历史 -->
         <view class="section " bindtap="toggleShowHistory">借阅历史
-            <span wx:if="{{showHistory}}" class="hide-btn btn">^</span>
-            <span wx:else class="show-btn btn">^</span>
+            <span wx:if="{{records.length !== 0}}">
+                <span wx:if="{{showHistory}}" class="hide-btn btn">^</span>
+                <span wx:else class="show-btn btn">^</span>
+            </span>
         </view>
         <view class='records list' wx:if="{{showHistory}}">
             <view wx:for="{{records}}" wx:key="index" class="book-item">
@@ -41,13 +43,15 @@
 
         <!-- 心愿单 -->
         <view class="section" bindtap="toggleShowWishes">心愿单
-            <span wx:if="{{showWishes}}" class="hide-btn btn">^</span>
-            <span wx:else class="show-btn btn">^</span>
+            <span wx:if="{{wishes.length !== 0}}">
+                <span wx:if="{{showWishes}}" class="hide-btn btn">^</span>
+                <span wx:else class="show-btn btn">^</span>
+            </span>
         </view>
         <view class='wishes list' wx:if="{{showWishes}}">
             <view wx:for="{{wishes}}" wx:key="index" class="book-item">
                 <view class="book-info">
-                        <text>{{item.title}}</text>
+                    <text>{{item.title}}</text>
                 </view>
                 <view class="cancel">
                     <button type='default' size='mini' data-detail="{{item}}" bindtap='cancelWish'>移除</button>

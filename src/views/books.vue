@@ -140,7 +140,7 @@ export default {
     data() {
         return {
             tabActive: 'store',
-            key: '数学之美',
+            key: '',
             keyStore: '',
             recordList: [],
             bookData: [],
