@@ -37,7 +37,7 @@ App({
     wx.getStorage({
       key: 'isLogin',
       success: res => {
-        if (res && res.data !== 1) {
+        if (res && res.data !== '1') {
           wx.navigateTo({
             url: './pages/login/login',
             success(e) {
