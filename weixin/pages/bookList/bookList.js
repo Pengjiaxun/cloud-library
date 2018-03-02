@@ -16,6 +16,13 @@ Page({
         this.getBookList()
         this.getOrderList()
     },
+    onShow() {
+        this.setData({
+            searchKey: ''
+        })
+        this.getBookList()
+        this.getOrderList()
+    },
     switchTab(event) {
         this.setData({ activeIndex: +event.target.dataset.index })
     },
