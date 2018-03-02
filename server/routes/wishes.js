@@ -15,7 +15,7 @@ router.all('*', function (req, res, next) {
     }
 })
 
-// 愿望列表
+// 后台愿望列表
 router.get('/list', (req, res) => {
     WishSchema
         .aggregate([{
@@ -39,20 +39,25 @@ router.get('/list', (req, res) => {
                 })
             }
         })
-    // WishSchema.find({}, (err, data) => {
-    //     if (err) {
-    //         res.json({
-    //             result: false,
-    //             msg: err
-    //         })
-    //     } else {
-    //         res.json({
-    //             result: true,
-    //             msg: '查询成功',
-    //             data: data
-    //         })
-    //     }
-    // })
+})
+
+// 用户愿望列表
+router.get('/mine', (req, res) => {
+    const { user } = req.query
+    WishSchema.find({ user }, (err, data) => {
+        if (err) {
+            res.json({
+                result: false,
+                msg: err
+            })
+        } else {
+            res.json({
+                result: true,
+                msg: '查询成功',
+                data: data
+            })
+        }
+    })
 })
 
 // 加入愿望清单
@@ -98,6 +103,25 @@ router.post('/add', (req, res) => {
             msg: '用户名或书名不能为空'
         })
     }
+})
+
+// 移除愿望清单
+router.post('/del', (req, res) => {
+    console.log(req.body)
+    const { title, user } = req.body
+    WishSchema.remove({ title, user }, (err, data) => {
+        if (err) {
+            res.json({
+                result: false,
+                msg: err
+            })
+        } else {
+            res.json({
+                result: true,
+                msg: '删除成功'
+            })
+        }
+    })
 })
 
 module.exports = router
