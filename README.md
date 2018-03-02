@@ -1,21 +1,33 @@
-# cloud-library
+# cloud-library
+涵盖前端和后台的图书馆借阅管理系统。
 
-> A Vue.js project
+功能包括：
+- 管理端
+    1. 图书管理（图书上下架、分类搜索）
+    2. 用户管理（添加、删除用户）
+    3. 借阅记录（查询与搜索图书的借阅记录）
+    4. 愿望清单（用户的愿望清单列表）
+    5. 待完善...
 
-## Build Setup
+- 用户端
+    1. 所有书籍列表
+    2. 搜索图书
+    3. 将图书加入/移除心愿单
+    4. 查看图书详情
+    5. 图书的借阅、归还
+    6. 借阅排行列表
+    7. 待完善...
 
-``` bash
-# install dependencies
-npm install
+涉及技术：
+- 后台：Node.js + Express
+- 包管理：NPM
+- 管理平台：Vue.js + ElementUI
+- 用户平台：微信小程序
+- 数据库：Mongodb
+- CSS库：Sass
+- JavaScript版本: ES6
 
-# serve with hot reload at localhost:8080
-npm run dev
+说明：
 
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+1. 所有书籍信息均来源于豆瓣读书开放api接口；
+2. 此项目是作者用于学习小程序与后台技术的实验性产品，望各位多多批评指正。
